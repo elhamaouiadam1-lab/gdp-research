@@ -49,7 +49,6 @@ export default function TimeSeriesSection() {
         number="05"
         title="Time Series Forecasting"
         description="Two smoothing methods are applied to quarterly GDP growth data. Moving Average (3-period) and Exponential Smoothing (α = 0.3) are compared on tracking accuracy. The COVID-19 shock (Q1–Q2 2020) provides a stress test for both methods."
-        number="05"
       />
 
       {/* Method cards */}
