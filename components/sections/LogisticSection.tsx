@@ -21,7 +21,6 @@ export default function LogisticSection() {
         number="03"
         title="Logistic Regression"
         description="A binary logistic model predicts the probability that GDP growth exceeds the sample mean. The outcome variable is coded 1 (high growth) or 0 (low growth), transforming the regression into a classification problem."
-        number="03"
       />
 
       {/* Binary framing card */}
