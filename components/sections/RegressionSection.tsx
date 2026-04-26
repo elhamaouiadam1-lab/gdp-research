@@ -155,23 +155,44 @@ export default function RegressionSection() {
         >
           <h3 className="font-sans font-medium text-ink-200 text-sm mb-1">Coefficient Magnitude</h3>
           <p className="font-mono text-xs text-ink-600 mb-6">Standardized effect size by variable</p>
-          <ResponsiveContainer width="100%" height={300}>
+         <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 20, top: 4, bottom: 4 }}>
-              <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-              <XAxis type="number" domain={[-1, 0.8]} tickFormatter={(v) => v.toFixed(1)} />
-              <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 10, fontFamily: "var(--font-dm-mono)" }} />
-              <Tooltip content={<CustomTooltip />} />
-              <ReferenceLine x={0} stroke="#5c5c6e" strokeWidth={1} />
-              <Bar dataKey="coefficient" radius={[0, 3, 3, 0]}>
+              {/* REMOVED: Heavy grid lines. Added a super subtle vertical grid */}
+              <CartesianGrid stroke="#ffffff" strokeOpacity={0.05} horizontal={false} />
+              
+              {/* CLEANED AXES: Removed axis lines and tick marks, kept only the text */}
+              <XAxis 
+                type="number" 
+                domain={[-1, 0.8]} 
+                tickFormatter={(v) => v.toFixed(1)} 
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: '#6b7280', fontSize: 11, fontFamily: "var(--font-mono)" }}
+                dy={10}
+              />
+              <YAxis 
+                type="category" 
+                dataKey="name" 
+                width={120} 
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: '#9ca3af', fontSize: 11, fontFamily: "var(--font-mono)" }} 
+              />
+              
+              <Tooltip cursor={{ fill: '#ffffff', opacity: 0.02 }} content={<CustomTooltip />} />
+              <ReferenceLine x={0} stroke="#4b5563" strokeWidth={1} strokeDasharray="3 3" />
+              
+              {/* ROUNDED BARS: Adds a modern pill-shape to the data */}
+              <Bar dataKey="coefficient" radius={[4, 4, 4, 4]} barSize={24}>
                 {chartData.map((entry) => (
                   <Cell
                     key={entry.variable}
                     fill={!entry.significant
-                      ? "#3d3d4d"
+                      ? "#374151" /* Subdued gray for non-significant */
                       : entry.coefficient >= 0
-                        ? "#10b981"
-                        : "#f87171"}
-                    fillOpacity={entry.significant ? 0.85 : 0.4}
+                        ? "#10b981" /* Bright Emerald */
+                        : "#f43f5e" /* Rose Red */}
+                    fillOpacity={entry.significant ? 1 : 0.4}
                   />
                 ))}
               </Bar>
