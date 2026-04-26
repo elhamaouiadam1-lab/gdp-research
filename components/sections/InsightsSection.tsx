@@ -66,7 +66,7 @@ export default function InsightsSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
-            className={`card-base p-6 border-l-2 ${f.color} hover:bg-ink-800/30 transition-colors`}
+            className={`card-base p-6 border-l-2 ${f.color}`}
           >
             <div className="grid md:grid-cols-[auto_1fr] gap-5">
               <div className="flex flex-col items-start gap-2 md:w-48">
@@ -90,16 +90,15 @@ export default function InsightsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-12 p-8 bg-gradient-to-r from-academic-blue/20 to-transparent border border-academic-blue/30 rounded-xl"
+        className="mt-12 relative group"
       >
-        <p className="font-serif text-xl text-ink-100 leading-relaxed mb-3">
-          "The evidence consistently points to labor market conditions and exchange rate dynamics
-          as the primary drivers of short-run GDP growth in this sample."
-        </p>
-        <p className="font-mono text-xs text-ink-500">
-          — Derived from OLS, Logistic, and Model Selection results · Confirmed by all three variable selection methods
-        </p>
+        <div className="absolute inset-0 bg-blue-500/10 blur-2xl rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="relative p-8 bg-[#0A0A0C]/60 backdrop-blur-xl border border-white/10 rounded-2xl">
+          <p className="font-sans text-xl text-gray-200 leading-relaxed mb-4">
+            "The evidence consistently points to <span className="text-emerald-400 font-medium">labor market conditions</span> and <span className="text-emerald-400 font-medium">exchange rate dynamics</span> as the primary drivers of short-run GDP growth in this sample."
+          </p>
+          <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
+            — Derived from OLS, Logistic, & Model Selection Results
+          </p>
+        </div>
       </motion.div>
-    </Section>
-  );
-}
