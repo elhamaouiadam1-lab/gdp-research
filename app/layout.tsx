@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       {/* We use a very dark, rich background color as the base */}
       <body className="bg-[#0A0A0C] text-gray-200 font-sans antialiased selection:bg-emerald-500/30">
-        <div className="min-h-screen relative overflow-hidden">
+        <div className="min-h-screen relative">
           {/* Subtle global background glow */}
           <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
