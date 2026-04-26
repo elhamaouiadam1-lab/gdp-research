@@ -41,16 +41,15 @@ const findings = [
   },
   {
     number: "06",
-    category: "Forecasting",
-    title: "Exponential smoothing outperforms moving average across all error metrics",
-    body: "By weighting recent observations more heavily (α = 0.3), exponential smoothing achieves 44% lower MAE and 39% lower RMSE than the 3-period moving average. The COVID-19 shock in 2020 illustrates this advantage — the moving average lagged significantly behind the actual path.",
+    title: "Forecasting",
+    body: "By weighting recent observations more heavily (α = 0.3)...",
     color: "border-academic-gold/30",
   },
-];
+]; // <--- Make sure this closing bracket and semicolon exist!
 
 export default function InsightsSection() {
   return (
-    <Section id="insights" className="border-t border-ink-800/40">
+    <Section id="insights" className="border-t border-white/10">
       <SectionHeader
         label="Conclusions"
         number="06"
