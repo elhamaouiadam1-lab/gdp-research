@@ -160,7 +160,7 @@ export default function LogisticSection() {
                   <span className="font-mono text-[10px] text-ink-500 w-28 shrink-0 truncate">
                     {c.variable.split(" ")[0]}
                   </span>
-                  <div className="flex-1 h-1.5 bg-ink-800 rounded-full overflow-hidden">
+                  <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${Math.min(pct, 100)}%` }}
