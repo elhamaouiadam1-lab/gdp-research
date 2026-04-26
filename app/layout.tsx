@@ -26,14 +26,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      {/* We use a very dark, rich background color as the base */}
-      <body className="bg-[#0A0A0C] text-gray-200 font-sans antialiased selection:bg-emerald-500/30">
-        <div className="min-h-screen relative">
-          {/* Subtle global background glow */}
-          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
+      {/* Added overflow-x-hidden to prevent horizontal scrolling from the glows */}
+      <body className="bg-[#0A0A0C] text-gray-200 font-sans antialiased selection:bg-emerald-500/30 overflow-x-hidden">
+        
+        {/* Changed to flex flex-col to push footer to the bottom */}
+        <div className="min-h-screen flex flex-col relative">
           
-          <main className="relative z-10 container mx-auto px-4 py-12 md:py-24 max-w-6xl">
+          {/* CHANGED: 'absolute' to 'fixed' and added '-z-10' so they don't stretch the page height */}
+          <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none -z-10" />
+          <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none -z-10" />
+          
+          {/* Added flex-grow so the main content fills available space, pushing the footer down */}
+          <main className="relative z-10 container mx-auto px-4 py-12 md:py-24 max-w-6xl flex-grow">
             {children}
           </main>
         </div>
