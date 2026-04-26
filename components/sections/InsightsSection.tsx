@@ -1,51 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section, SectionHeader, Card } from "../ui";
+import { Section, SectionHeader } from "../ui";
 
 const findings = [
   {
     number: "01",
     category: "Model Fit",
     title: "The OLS model explains 93% of GDP growth variation",
-    body: "With an R² of 0.9312 and an F-statistic of 272.4, the full model has exceptionally strong explanatory power. The adjusted R² (0.9278) confirms this is not due to overfitting. This is consistent with country-level macro models in the empirical growth literature.",
-    color: "border-academic-gold/40",
+    body: "With an R² of 0.931 and an F-statistic of 290.7, the full model has exceptionally strong explanatory power. The adjusted R² (0.928) confirms this is not due to overfitting. This is consistent with country-level macro models in the empirical growth literature.",
+    color: "border-emerald-500/40",
   },
   {
     number: "02",
     category: "Labor Markets",
     title: "Unemployment is the dominant macroeconomic drag",
-    body: "The unemployment coefficient (−0.847) dwarfs all other predictors in magnitude. This aligns with Okun's Law: cyclical unemployment reliably predicts output shortfalls. Policy implications are clear — labor market policy is the most direct lever for growth.",
-    color: "border-red-500/30",
+    body: "The unemployment coefficient dwarfs all other predictors in magnitude. This aligns with Okun's Law: cyclical unemployment reliably predicts output shortfalls. Policy implications are clear — labor market policy is the most direct lever for growth.",
+    color: "border-rose-500/40",
   },
   {
     number: "03",
     category: "External Sector",
     title: "Exchange rate appreciation consistently supports growth",
-    body: "A stronger nominal exchange rate (coef. +0.612) correlates with higher GDP growth. This may reflect improved purchasing power, lower imported inflation, or the signaling effect of currency strength on investor confidence. The effect is statistically robust across all specifications.",
-    color: "border-emerald-500/30",
+    body: "A stronger nominal exchange rate correlates with higher GDP growth. This may reflect improved purchasing power, lower imported inflation, or the signaling effect of currency strength on investor confidence. The effect is statistically robust across all specifications.",
+    color: "border-blue-500/40",
   },
   {
     number: "04",
     category: "Parsimony",
     title: "Model selection confirms a 6-variable parsimonious model",
-    body: "All three selection methods — forward, backward, and best subset — remove the same two variables: interest rate and imports. The simplified model achieves a higher adjusted R² (0.9278) than alternative specifications, demonstrating that parsimony and accuracy are not in conflict here.",
-    color: "border-academic-blue/40",
+    body: "All three selection methods — forward, backward, and best subset — remove the same variables. The simplified model achieves a high adjusted R², demonstrating that parsimony and accuracy are not in conflict here.",
+    color: "border-purple-500/40",
   },
   {
     number: "05",
     category: "Classification",
-    title: "Logistic model classifies growth regimes with 87.6% accuracy",
-    body: "Binary classification of high vs. low GDP growth periods achieves an AUC of 0.921, indicating near-excellent discrimination. The probability outputs can inform early-warning systems for growth downturns — a practical application beyond the academic context.",
-    color: "border-purple-500/30",
+    title: "Logistic model classifies growth regimes with high accuracy",
+    body: "Binary classification of high vs. low GDP growth periods achieves excellent discrimination. The probability outputs can inform early-warning systems for growth downturns — a practical application beyond the academic context.",
+    color: "border-indigo-500/40",
   },
   {
     number: "06",
-    title: "Forecasting",
-    body: "By weighting recent observations more heavily (α = 0.3)...",
-    color: "border-academic-gold/30",
+    category: "Forecasting",
+    title: "Exponential smoothing outperforms moving average across all error metrics",
+    body: "By weighting recent observations more heavily, exponential smoothing achieves significantly lower MAE and RMSE than the 3-period moving average. The COVID-19 shock in 2020 illustrates this advantage — the moving average lagged significantly behind the actual path.",
+    color: "border-emerald-500/40",
   },
-]; // <--- Make sure this closing bracket and semicolon exist!
+];
 
 export default function InsightsSection() {
   return (
@@ -69,14 +70,14 @@ export default function InsightsSection() {
           >
             <div className="grid md:grid-cols-[auto_1fr] gap-5">
               <div className="flex flex-col items-start gap-2 md:w-48">
-                <span className="font-mono text-[10px] tracking-widest text-ink-600">{f.number}</span>
-                <span className="font-mono text-[10px] tracking-widest uppercase text-academic-gold/70 bg-academic-gold/10 px-2 py-0.5 rounded-full border border-academic-gold/20">
+                <span className="font-mono text-[10px] tracking-widest text-gray-500">{f.number}</span>
+                <span className="font-mono text-[10px] tracking-widest uppercase text-emerald-400/70 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
                   {f.category}
                 </span>
               </div>
               <div>
-                <h3 className="font-sans font-semibold text-ink-100 mb-2 leading-snug">{f.title}</h3>
-                <p className="text-sm text-ink-400 leading-relaxed">{f.body}</p>
+                <h3 className="font-sans font-semibold text-gray-200 mb-2 leading-snug">{f.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{f.body}</p>
               </div>
             </div>
           </motion.div>
@@ -101,3 +102,6 @@ export default function InsightsSection() {
           </p>
         </div>
       </motion.div>
+    </Section>
+  );
+}
