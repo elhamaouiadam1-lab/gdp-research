@@ -56,7 +56,6 @@ export default function InsightsSection() {
         number="06"
         title="Key Findings"
         description="A synthesis of the empirical results across all four analytical tasks. These conclusions are drawn directly from the data and are robust to alternative model specifications."
-        number="06"
       />
 
       <div className="space-y-4">
