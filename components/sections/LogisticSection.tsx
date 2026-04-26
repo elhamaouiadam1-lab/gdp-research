@@ -111,7 +111,7 @@ export default function LogisticSection() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.04 }}
-                  className={`border-b border-ink-800/30 hover:bg-ink-800/20 transition-colors ${!row.significant ? "opacity-45" : ""}`}
+                  className={`border-b border-white/5 hover:bg-white/[0.03] transition-colors ${!row.significant ? "opacity-40" : ""}`}
                 >
                   <td className="px-4 py-3 font-mono text-xs text-ink-300">{row.variable}</td>
                   <td className={`px-4 py-3 text-right font-mono text-xs tabular-nums ${
