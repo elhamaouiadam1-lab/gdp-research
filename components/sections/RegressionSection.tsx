@@ -35,15 +35,26 @@ const interpretationCards = [
 ];
 
 const CustomTooltip = ({ active, payload }: any) => {
-  if (!active || !payload?.length) return null;
-  const d = payload[0].payload;
+  // 1. Add extra safety checks here
+  if (!active || !payload || payload.length === 0) return null;
+  
+  // 2. Add the question mark (optional chaining) here
+  const d = payload[0]?.payload;
+  
+  if (!d) return null;
+  
   return (
-    <div className="bg-ink-900 border border-ink-700 rounded-lg p-3 shadow-xl">
-      <p className="font-mono text-xs text-ink-400 uppercase tracking-wider mb-1">{d.label}</p>
-      <p className={`font-mono text-sm font-medium ${d.coefficient >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-        β = {d.coefficient.toFixed(3)}
-      </p>
-      <p className="font-mono text-xs text-ink-500 mt-1">p = {d.pValue.toFixed(4)}</p>
+    <div className="bg-[#0A0A0C]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl">
+      <p className="font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-2">{d.label}</p>
+      
+      <div className="flex items-center gap-3">
+        <p className={`font-mono text-lg font-medium ${d.coefficient >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+          β = {d.coefficient.toFixed(3)}
+        </p>
+        <span className="font-mono text-xs text-gray-500 border-l border-white/10 pl-3">
+          p = {d.pValue?.toFixed(4)}
+        </span>
+      </div>
     </div>
   );
 };
