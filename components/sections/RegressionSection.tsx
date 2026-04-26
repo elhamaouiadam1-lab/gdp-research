@@ -63,7 +63,6 @@ export default function RegressionSection() {
         number="02"
         title="Multiple Linear Regression"
         description="Ordinary Least Squares estimation of the full 8-variable model. The regression explains 93.1% of variation in GDP growth, providing strong overall fit."
-        number="02"
       />
 
       {/* Model fit stats */}
