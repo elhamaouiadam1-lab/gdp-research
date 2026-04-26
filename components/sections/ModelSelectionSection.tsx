@@ -70,7 +70,6 @@ export default function ModelSelectionSection() {
         number="04"
         title="Variable Selection Methods"
         description="Three selection strategies — forward stepwise, backward elimination, and best subset — are compared using AIC and Adjusted R². All three converge on the same parsimonious 6-variable model."
-        number="04"
       />
 
       {/* Consensus result */}
