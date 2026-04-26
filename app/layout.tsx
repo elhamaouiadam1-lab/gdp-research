@@ -1,43 +1,42 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const inter = Inter({ 
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
-const dmSans = DM_Sans({
+const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["300", "400", "500", "600"],
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  variable: "--font-dm-mono",
-  weight: ["300", "400", "500"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Macroeconomic Determinants of GDP Growth",
-  description:
-    "An econometric analysis using Multiple Linear Regression, Logistic Regression, Model Selection, and Time Series Forecasting on 180 quarterly observations of country-level macroeconomic data.",
-  keywords: ["econometrics", "GDP growth", "regression analysis", "time series", "macroeconomics"],
+  title: "Macroeconomic Determinants Dashboard",
+  description: "Econometrics Research & GDP Growth Analysis",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} font-sans bg-ink-950 text-ink-100 antialiased`}
-      >
-        {children}
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      {/* We use a very dark, rich background color as the base */}
+      <body className="bg-[#0A0A0C] text-gray-200 font-sans antialiased selection:bg-emerald-500/30">
+        <div className="min-h-screen relative overflow-hidden">
+          {/* Subtle global background glow */}
+          <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none" />
+          
+          <main className="relative z-10 container mx-auto px-4 py-12 md:py-24 max-w-6xl">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
